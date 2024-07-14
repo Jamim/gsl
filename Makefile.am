@@ -19,7 +19,7 @@ EXTRA_DIST = autogen.sh gsl-config.in gsl.pc.in configure.ac THANKS BUGS gsl.spe
 
 lib_LTLIBRARIES = libgsl.la
 libgsl_la_SOURCES = version.c
-libgsl_la_LIBADD = $(GSL_LIBADD) $(SUBLIBS)
+libgsl_la_LIBADD = $(GSL_LIBADD) $(SUBLIBS) @CBLAS_LINK_LIBS@
 libgsl_la_LDFLAGS = $(GSL_LDFLAGS) -version-info $(GSL_LT_VERSION)
 noinst_HEADERS = templates_on.h templates_off.h build.h
 
@@ -29,10 +29,10 @@ m4data_DATA = gsl.m4
 bin_PROGRAMS = gsl-randist gsl-histogram
 
 gsl_randist_SOURCES = gsl-randist.c
-gsl_randist_LDADD = libgsl.la cblas/libgslcblas.la
+gsl_randist_LDADD = libgsl.la
 
 gsl_histogram_SOURCES = gsl-histogram.c
-gsl_histogram_LDADD = libgsl.la cblas/libgslcblas.la
+gsl_histogram_LDADD = libgsl.la
 
 check_SCRIPTS = test_gsl_histogram.sh pkgconfig.test
 TESTS = test_gsl_histogram.sh pkgconfig.test
@@ -51,6 +51,8 @@ edit = $(SED) \
 	-e 's|@GSL_CFLAGS[@]|$(GSL_CFLAGS)|g' \
 	-e 's|@GSL_LIBM[@]|$(GSL_LIBM)|g' \
 	-e 's|@GSL_LIBS[@]|$(GSL_LIBS)|g' \
+	-e 's|@CBLAS_CFLAGS[@]|$(CBLAS_CFLAGS)|g' \
+	-e 's|@CBLAS_LIBS[@]|$(CBLAS_LIBS)|g' \
 	-e 's|@LIBS[@]|$(LIBS)|g' \
 	-e 's|@VERSION[@]|$(VERSION)|g'
 

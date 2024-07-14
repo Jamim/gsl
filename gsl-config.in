@@ -58,11 +58,11 @@ while test $# -gt 0; do
 	;;
 
     --cflags)
-       	echo @GSL_CFLAGS@ 
+       	echo @GSL_CFLAGS@ @CBLAS_CFLAGS@ 
        	;;
 
     --libs)
-        : ${GSL_CBLAS_LIB=-lgslcblas}
+        : ${GSL_CBLAS_LIB=@CBLAS_LIBS@}
 	echo @GSL_LIBS@ $GSL_CBLAS_LIB @GSL_LIBM@
        	;;
 

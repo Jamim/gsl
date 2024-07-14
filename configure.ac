@@ -220,6 +220,16 @@ if test "x$LIBS" = "x" ; then
   AC_CHECK_LIB(m, cos)
 fi
 
+sinclude(ax_cblas.m4)
+AX_CBLAS
+if test "x$CBLAS_LIBS" != "x"; then
+   CBLAS_LINK_LIBS="$CBLAS_LIBS"
+else
+   CBLAS_LINK_LIBS="\$(top_builddir)/cblas/libgslcblas.la"
+   CBLAS_LIBS="-lgslcblas"
+fi
+AC_SUBST(CBLAS_LINK_LIBS)
+
 dnl Remember to put a definition in acconfig.h for each of these
 AC_CHECK_DECLS(feenableexcept,,,[#define _GNU_SOURCE 1
 #include <fenv.h>]) 
