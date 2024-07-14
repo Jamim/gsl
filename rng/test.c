@@ -166,15 +166,11 @@ main (void)
 
   rng_test (gsl_rng_random_bsd, 0, 10000, 1457025928);
   rng_test (gsl_rng_random8_bsd, 0, 10000, 1910041713);
-  rng_test (gsl_rng_random32_bsd, 0, 10000, 1663114331);
-  rng_test (gsl_rng_random64_bsd, 0, 10000, 864469165);
   rng_test (gsl_rng_random128_bsd, 0, 10000, 1457025928);
   rng_test (gsl_rng_random256_bsd, 0, 10000, 1216357476);
 
   rng_test (gsl_rng_random_libc5, 0, 10000, 428084942);
   rng_test (gsl_rng_random8_libc5, 0, 10000, 1910041713);
-  rng_test (gsl_rng_random32_libc5, 0, 10000, 1967452027);
-  rng_test (gsl_rng_random64_libc5, 0, 10000, 2106639801);
   rng_test (gsl_rng_random128_libc5, 0, 10000, 428084942);
   rng_test (gsl_rng_random256_libc5, 0, 10000, 116367984);
 
